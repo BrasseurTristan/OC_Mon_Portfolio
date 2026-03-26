@@ -88,6 +88,14 @@
   transform: translateY(-2px);
 }
 
+.technologiesList {
+  width: 100%;
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
 /* Responsive : mobile */
 @media (max-width: 768px) {
   .heroTitle {

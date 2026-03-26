@@ -1,0 +1,32 @@
+{
+    "technologies": [
+        {
+            "id": 1,
+            "name": "Html"
+        },
+        {
+            "id": 2,
+            "name": "CSS"
+        },
+        {
+            "id": 3,
+            "name": "Tailwind"
+        },
+        {
+            "id": 4,
+            "name": "Javascript"
+        },
+        {
+            "id": 5,
+            "name": "Next.js"
+        },
+        {
+            "id": 6,
+            "name": "Symfony 5"
+        },
+        {
+            "id": 7,
+            "name": "Docker"
+        }
+    ]
+}

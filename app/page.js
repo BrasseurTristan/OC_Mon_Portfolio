@@ -1,4 +1,6 @@
 import styles from "./page.module.css";
+import {technologies} from "../data/technologies.json"
+import Badge from "./components/badge/badge";
 
 export default function Home() {
   return (
@@ -21,7 +23,13 @@ export default function Home() {
           <a href="#contact" className={`${styles.btn} ${styles.btnSecondary}`}>
             Me contacter
           </a>
-        </div>
+          </div>
+          <div className={styles.technologiesList}>
+            {technologies.map(({id,name}) => (
+              <Badge key={id} name={name}/>
+            ))}
+          </div>
+        
       </div>
     </div>
   )
