@@ -1,46 +1,89 @@
 'use client'
-import { usePathname } from 'next/navigation'
+
+import { useState } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import styles from './Navigation.module.css'
 
 export default function Navigation() {
+  const [isOpen, setIsOpen] = useState(false)
   const pathname = usePathname()
 
- return (
-   <nav className={styles.nav}>
-     <div className="container">
-       <Link href="/" className={styles.logo}>
-         Mon Portfolio
-       </Link>
+  const toggleMenu = () => {
+    setIsOpen(!isOpen)
+  }
 
-       <ul className={styles.menu}>
-         <li>
-           <Link href="/" className={pathname === '/' ? `${styles.link} ${styles.active}` : styles.link}>
-             Accueil
-           </Link>
-         </li>
-         <li>
-           <Link href="/projets" className={pathname === '/projets' ? `${styles.link} ${styles.active}` : styles.link}>
-             Projets
-           </Link>
-         </li>
-         <li>
-           <Link href="/formations" className={pathname === '/formations' ? `${styles.link} ${styles.active}` : styles.link}>
-             Formations
-           </Link>
-         </li>
-         <li>
-           <Link href="/a-propos" className={pathname === '/propos' ? `${styles.link} ${styles.active}` : styles.link}>
-             À propos
-           </Link>
-         </li>
-         <li>
-           <Link href="/contact" className={pathname === '/contact' ? `${styles.link} ${styles.active}` : styles.link}>
-             Contact
-           </Link>
-         </li>
-       </ul>
-     </div>
-   </nav>
- )
+  const closeMenu = () => {
+    setIsOpen(false)
+  }
+
+  return (
+    <nav className={styles.nav}>
+      <div className={styles.container}>
+        <Link href="/" className={styles.logo} onClick={closeMenu}>
+          Mon Portfolio
+        </Link>
+
+        {/* Bouton burger pour mobile */}
+        <button 
+          className={styles.burger}
+          onClick={toggleMenu}
+          aria-label="Menu"
+        >
+          <span className={isOpen ? styles.burgerOpen : ''}></span>
+          <span className={isOpen ? styles.burgerOpen : ''}></span>
+          <span className={isOpen ? styles.burgerOpen : ''}></span>
+        </button>
+
+        {/* Menu */}
+        <ul className={`${styles.menu} ${isOpen ? styles.menuOpen : ''}`}>
+          <li>
+            <Link 
+              href="/" 
+              className={pathname === '/' ? `${styles.link} ${styles.active}` : styles.link}
+              onClick={closeMenu}
+            >
+              Accueil
+            </Link>
+          </li>
+          <li>
+            <Link 
+              href="/projets" 
+              className={pathname.startsWith('/projets') ? `${styles.link} ${styles.active}` : styles.link}
+              onClick={closeMenu}
+            >
+              Projets
+            </Link>
+          </li>
+          <li>
+            <Link 
+              href="/formation" 
+              className={pathname.startsWith('/formations') ? `${styles.link} ${styles.active}` : styles.link}
+              onClick={closeMenu}
+            >
+              Formations
+            </Link>
+          </li>
+          <li>
+            <Link 
+              href="/a-propos" 
+              className={pathname === '/a-propos' ? `${styles.link} ${styles.active}` : styles.link}
+              onClick={closeMenu}
+            >
+              À propos
+            </Link>
+          </li>
+          <li>
+            <Link 
+              href="/contact" 
+              className={pathname === '/contact' ? `${styles.link} ${styles.active}` : styles.link}
+              onClick={closeMenu}
+            >
+              Contact
+            </Link>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  )
 }
