@@ -1,13 +1,21 @@
-import styles from "./page.module.css";
-import {technologies} from "../data/technologies.json"
-import Badge from "./components/badge/badge";
+import styles from "./page.module.css"
+import Tag from "./components/Tag/Tag"
+import Link from "next/link"
+
+const technologies = [
+  "React",
+  "Next.js",
+  "Node.js",
+  "TypeScript",
+  "Tailwind CSS",
+]
 
 export default function Home() {
   return (
     <div className={styles.hero}>
       <div className={styles.heroContent}>
         <h1 className={styles.heroTitle}>
-          Bonjour, je suis <span className={styles.highlight}>Prénom Nom</span>
+          Bonjour, je suis <span className={styles.highlight}>Tristan Brasseur</span>
         </h1>
         <p className={styles.heroSubtitle}>
           Développeur Web Full-Stack
@@ -17,19 +25,18 @@ export default function Home() {
           avec React, Next.js et Node.js.
         </p>
         <div className={styles.heroButtons}>
-          <a href="#projects" className={`${styles.btn} ${styles.btnPrimary}`}>
+          <Link href="/projets" className={`${styles.btn} ${styles.btnPrimary}`}>
             Voir mes projets
-          </a>
-          <a href="#contact" className={`${styles.btn} ${styles.btnSecondary}`}>
+          </Link>
+          <Link href="#contact" className={`${styles.btn} ${styles.btnSecondary}`}>
             Me contacter
-          </a>
-          </div>
-          <div className={styles.technologiesList}>
-            {technologies.map(({id,name}) => (
-              <Badge key={id} name={name}/>
-            ))}
-          </div>
-        
+          </Link>
+        </div>
+        <div className={styles.tagsContainer}>
+          {technologies.map((tech, index) => (
+            <Tag key={index}>{tech}</Tag>
+          ))}
+        </div>
       </div>
     </div>
   )
