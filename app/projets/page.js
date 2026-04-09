@@ -4,6 +4,12 @@ import styles from './page.module.css'
 import projectsData from '@/data/projects.json'
 import Tag from '../components/Tag/Tag'
 
+export const metadata = {
+  title: 'Mes Projets | Portfolio',
+  description: 'Découvrez mes projets de développement web : applications React, sites Next.js et plus encore.',
+}
+
+
 export default function Projects() {
     return (
         <div className={styles.container}>

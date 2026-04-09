@@ -2,6 +2,7 @@ import { Inter, Poppins } from 'next/font/google'
 import "./globals.css";
 import Navigation from "./components/Navigation/Navigation";
 import Footer from "./components/Footer/Footer";
+import { Analytics } from "@vercel/analytics/next"
 
 const inter = Inter({
   subsets: ['latin'],
@@ -33,6 +34,7 @@ export default function RootLayout({ children }) {
         </main>
         <Footer/>
       </body>
+      <Analytics />
     </html>
   );
 }
