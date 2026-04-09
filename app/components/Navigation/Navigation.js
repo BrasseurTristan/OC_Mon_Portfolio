@@ -57,7 +57,7 @@ export default function Navigation() {
           </li>
           <li>
             <Link 
-              href="/formation" 
+              href="/formations" 
               className={pathname.startsWith('/formations') ? `${styles.link} ${styles.active}` : styles.link}
               onClick={closeMenu}
             >
